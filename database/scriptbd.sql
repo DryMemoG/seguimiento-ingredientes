@@ -1,0 +1,40 @@
+-- CREACIÓN DE LA BASE DE DATOS
+CREATE DATABASE IF NOT EXISTS Gestioningredientes;
+USE Gestioningredientes;
+
+-- TABLA TIPO CANTIDAD PARA TIPOS DE CANTIDAD (SOBRE, PAQUETE, KILO, ETC.)
+CREATE TABLE IF NOT EXISTS TipoCantidad (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tipo VARCHAR(50) NOT NULL
+);
+
+-- TABLA INGREDIENTES
+CREATE TABLE IF NOT EXISTS Ingredientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL, 
+    cantidad DECIMAL(10, 2) NOT NULL,
+    tipo_cantidad_id INT NOT NULL,
+    precio DECIMAL(10,2),
+    fecha_vencimiento DATE NOT NULL,
+    estado_vencimiento BOOLEAN NOT NULL,
+    FOREIGN KEY (tipo_cantidad_id) REFERENCES TipoCantidad(id)
+);
+
+-- TABLA PARA REGISTRAR LOS CONSUMOS DE LOS INGREDIENTES TOTAL O PARCIALMENTE
+CREATE TABLE IF NOT EXISTS Consumos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_ingrediente INT NOT NULL,
+    cantidad_consumida DECIMAL(10, 2) NOT NULL,
+    fecha_consumo DATE NOT NULL,
+    consumo_total BOOLEAN NOT NULL,
+    FOREIGN key (id_ingrediente) REFERENCES Ingredientes(id)
+);
+
+-- TABLA PARA REGISTRO DE RECETAS PARA LLEVAR UN REGISTRO DE LO COCINADO DIARIAMENTE. 
+CREATE TABLE IF NOT EXISTS Recetas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    ingredientes TEXT NOT NULL,
+    instrucciones TEXT NOT NULL,
+    fecha_preparacion DATE NOT NULL
+);
