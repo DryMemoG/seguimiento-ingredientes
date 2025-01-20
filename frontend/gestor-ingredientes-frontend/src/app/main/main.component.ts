@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
 interface Module {
   title: string;
   description: string;
@@ -12,7 +13,7 @@ interface Module {
 
 @Component({
   selector: 'app-main',
-  imports: [MatCardModule, MatGridListModule, CommonModule],
+  imports: [MatCardModule, MatGridListModule, CommonModule, MatIconModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

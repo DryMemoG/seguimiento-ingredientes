@@ -1,9 +1,13 @@
 <div class="main-container">
-    <mat-grid-list cols="3" rowHeight="1:1">
+    <mat-grid-list cols="4" rowHeight="1:1">
         <mat-grid-tile *ngFor="let module of modules">
-            <mat-card>
+            <mat-card class="example-card" appearance="outlined">
                 <mat-card-header>
-                    <mat-card-title>{{ module.title }}</mat-card-title>
+                    <mat-card-title-group>
+                        <mat-card-title>{{ module.title }}</mat-card-title>
+                        
+                    </mat-card-title-group>
+                    
                 </mat-card-header>
                 <mat-card-content>
                     <p>{{ module.description }}</p>
